@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {AuthFormWrapper} from "./styled";
 import {Button} from "../../styles";
 import {useDispatch} from "react-redux";
@@ -7,9 +7,9 @@ import {signIn} from "../../store/auth/actions";
 import {useForm} from "react-hook-form";
 
 
-
 const AuthForm = () => {
         const {register, handleSubmit, setError, clearErrors, formState: {errors}} = useForm();
+
         const onSubmit = (data) => {
             if (data.username === process.env.REACT_APP_USER_LOGIN && data.password === process.env.REACT_APP_USER_PASSWORD) {
                 dispatch(signIn())
@@ -21,9 +21,6 @@ const AuthForm = () => {
                 }, 500);
             }
         }
-        useEffect(() => {
-
-        }, []);
 
 
         const history = useHistory();

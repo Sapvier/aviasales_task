@@ -25,7 +25,7 @@ function createSagaInjector(runSaga, rootSaga) {
         injectedSagas.delete(key);
     };
     injectSaga('root', rootSaga);
-    return { injectSaga, ejectSaga };
+    return {injectSaga, ejectSaga};
 }
 
 
@@ -38,11 +38,10 @@ export const store = createStore(rootReducer, persistedState, composeWithDevTool
 
 store.subscribe(() => {
     saveState({
-        authReducer: store.getState().authReducer
+            authReducer: store.getState().authReducer
         }
     )
 })
-
 
 sagaMiddleware.run(rootSaga);
 Object.assign(store, createSagaInjector(sagaMiddleware.run, rootSaga))

@@ -3,13 +3,13 @@ import {Redirect, Route} from "react-router-dom"
 
 
 function PrivateRoute({children, ...rest}) {
-    // const isAuth = JSON.parse(localStorage.getItem('isAuth')) ?? false
+    const isAuth = JSON.parse(localStorage.getItem('isAuth'))?.authReducer?.isAuth || false
 
     return (
         <Route
             {...rest}
             render={({location}) =>
-                true ? (children)
+                isAuth ? (children)
                     : (<Redirect to={{
                         pathname: "/",
                         state: {from: location}

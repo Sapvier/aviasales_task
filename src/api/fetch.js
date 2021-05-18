@@ -3,5 +3,5 @@ export const requestSearchId = () => {
 }
 
 export const requestTickets = (searchId) => {
-    return fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}&limit=5`)
+    return fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`)
 }

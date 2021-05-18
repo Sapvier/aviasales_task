@@ -1,8 +1,9 @@
-import {SAVE_TICKETS} from "./types";
+import {SAVE_ID, SAVE_TICKETS} from "./types";
 
 const initialState = () => ({
     tickets: [],
-    stop: false
+    stop: false,
+    searchId: null
 })
 
 
@@ -12,6 +13,9 @@ export const ticketsReducer = (state = initialState(), action) => {
             return state
         case SAVE_TICKETS: {
             return {...state, tickets: [...action.payload.tickets], stop: action.payload.stop}
+        }
+        case SAVE_ID: {
+            return {...state, searchId: action.payload.searchId}
         }
     }
 }
