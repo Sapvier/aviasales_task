@@ -1,32 +1,29 @@
 import React from 'react';
 import {Aside, CheckBox, FiltersBox} from "./styled";
+import {useDispatch, useSelector} from "react-redux";
+import {setChecked} from "../../store/filter/actions";
 
 
 const Filter = () => {
+    const tickets = useSelector(state => state.ticketsReducer.tickets).slice(0, 5)
+    const checkboxes = useSelector(state => state.filterReducer)
+    const dispatch = useDispatch()
+
+    const changeHandler = (id) => {
+        dispatch(setChecked({id, checkboxes, tickets}))
+    }
+
+
     return (
         <Aside>
             <FiltersBox>
-                <h5>КОЛИЧЕСТВО ПЕРЕСАДОК</h5>
-                <div>
-                    <CheckBox type="checkbox" id="all-stops"/>
-                    <label htmlFor="all-stops">Все</label>
-                </div>
-                <div>
-                    <CheckBox type="checkbox" id="no-stops"/>
-                    <label htmlFor="no-stops">Без пересадок</label>
-                </div>
-                <div>
-                    <CheckBox type="checkbox" id="one-stop"/>
-                    <label htmlFor="one-stop">1 пересадка</label>
-                </div>
-                <div>
-                    <CheckBox type="checkbox" id="two-stops"/>
-                    <label htmlFor="two-stops">2 пересадки</label>
-                </div>
-                <div>
-                    <CheckBox type="checkbox" id="three-stops"/>
-                    <label htmlFor="three-stops">3 пересадки</label>
-                </div>
+                <h5>Количество пересадок</h5>
+                {checkboxes.map(checkbox => (
+                    <div key={checkbox.id}>
+                        <CheckBox type="checkbox" id={checkbox.id} checked={checkbox.isActive} onChange={() => null}/>
+                        <label htmlFor={checkbox.id} onClick={() => changeHandler(checkbox.id)}>{checkbox.text}</label>
+                    </div>
+                ))}
             </FiltersBox>
         </Aside>
     );

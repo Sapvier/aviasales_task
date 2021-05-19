@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {activeShadow, defaultShadow, primaryBlue, primaryText, secondaryGray} from "../../constants/constants";
+import {activeShadow, defaultShadow, primaryBlue, primaryText, secondaryGray} from "../../constants";
 
 
 export const TicketWrapper = styled.div`

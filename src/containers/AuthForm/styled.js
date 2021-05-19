@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {errorRed, primaryBlue, secondaryGray, defaultShadow} from "../../constants/constants";
+import {errorRed, primaryBlue, secondaryGray, defaultShadow} from "../../constants";
 
 
 export const AuthFormWrapper = styled.div`

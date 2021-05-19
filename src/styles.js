@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryBlue} from "./constants/constants";
+import {primaryBlue} from "./constants";
 
 
 export const Button = styled.button`
@@ -14,8 +14,15 @@ export const Button = styled.button`
 
 export const LogoWrapper = styled.div`
   padding-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  & img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+  }
 `
+

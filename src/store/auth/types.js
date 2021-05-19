@@ -1,2 +1,5 @@
 export const SIGN_IN = "SIGN_IN"
 export const SIGN_OUT = "SIGN_OUT"
+export const FETCH_ID_FETCHING = "FETCH_ID_FETCHING"
+export const FETCH_ID_FAIL = "FETCH_ID_FAIL"
+export const FETCH_ID_SUCCESS = "FETCH_ID_SUCCESS"

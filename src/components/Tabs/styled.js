@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {defaultShadow, primaryBlue, primaryText} from "../../constants/constants";
+import {defaultShadow, hoverBlue, primaryBlue, primaryText} from "../../constants";
 
 
 export const TabsWrapper = styled.div`
@@ -12,7 +12,7 @@ export const TabsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: stretch;
+  align-content: stretch;  
   
   & div {
     height: 100%;
@@ -20,13 +20,19 @@ export const TabsWrapper = styled.div`
     text-align: center;  
     line-height: 50px;
     font-size: 12px;
-    color: ${primaryText}
+    color: ${primaryText};
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  & div[data-active=true] {
+    color: white;
+    background-color: ${primaryBlue};
   }
   
-  & div:hover {
-    background-color: ${primaryBlue};
-    color: white
+  & div:hover:not(div[data-active=true]) {
+    background-color: ${hoverBlue};    
   }
+  
   
   & div:first-child {
     border-radius: 5px 0 0 5px;    

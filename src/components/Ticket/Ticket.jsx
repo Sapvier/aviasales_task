@@ -1,6 +1,9 @@
 import React from 'react';
-import {Segment, SegmentItem, TicketHeader, TicketWrapper} from "./styled";
 import {v4} from 'uuid';
+//styles
+import {Segment, SegmentItem, TicketHeader, TicketWrapper} from "./styled";
+//utils
+import {minutesConvert} from "../../utils/minutesConvert";
 
 
 const Ticket = ({ticket}) => {
@@ -10,15 +13,6 @@ const Ticket = ({ticket}) => {
             const departTime = new Date(departure)
             return new Date(departTime.setMinutes(departTime.getMinutes() + duration)).toTimeString().substr(0, 5)
         }
-
-        const minutesConvert = (duration) => {
-            const hours = (duration / 60);
-            const rhours = Math.floor(duration / 60);
-            const minutes = (hours - rhours) * 60;
-            const rminutes = Math.round(minutes) < 10 ? '0' + Math.round(minutes) : Math.round(minutes);
-            return rhours + ":" + rminutes;
-        }
-
 
         return (
             <TicketWrapper>
@@ -38,7 +32,8 @@ const Ticket = ({ticket}) => {
                         </SegmentItem>
                         <SegmentItem>
                             {segment.stops.length ?
-                                <h5>{segment.stops.length} {segment.stops.length > 1 ? `ПЕРЕСАДКИ` : `ПЕРЕСАДКА`}</h5> : null}
+                                <h5>{segment.stops.length} {segment.stops.length > 1 ? "ПЕРЕСАДКИ" : `ПЕРЕСАДКА`}</h5>
+                                : <h5>БЕЗ ПЕРЕСАДОК</h5>}
                             <p>{segment.stops.join(', ')}</p>
                         </SegmentItem>
                     </Segment>

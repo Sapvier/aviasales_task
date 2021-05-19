@@ -3,7 +3,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import TicketsPage from "./pages/TicketsPage/TicketsPage";
-import {store} from "./store/configureStoreWithInjectSaga";
+import {store} from "./store/store";
 import {Provider} from "react-redux";
 
 

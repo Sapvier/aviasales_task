@@ -1,13 +1,17 @@
 import styled from 'styled-components'
-import {primaryBlue} from "../../constants/constants";
+import {primaryBlue} from "../../constants";
 
 
 export const TicketsListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   row-gap: 20px;
+  
+  & h3 {
+    height: 70vh;
+  }
 `
 export const TicketsListContainer = styled.div`
   display: flex;
@@ -19,6 +23,7 @@ export const TicketsListContainer = styled.div`
 export const ShowMoreButton = styled.button`
   width: 502px;
   height: 50px;
+  text-transform: uppercase;
 
   background-color: ${primaryBlue};
   border: none;
