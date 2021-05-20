@@ -9,7 +9,7 @@ export const setChecked = (payload) => {
         type: SET_CHECKED, payload: {
             checkboxes: filtered,
             id: payload.id,
-            tickets: payload.tickets
+            tickets: payload.slicedTickets
         }
     }
 }

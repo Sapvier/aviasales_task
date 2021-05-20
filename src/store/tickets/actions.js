@@ -2,7 +2,7 @@ import {
     FETCH_TICKETS_FAIL,
     FETCH_TICKETS_FETCHING,
     FETCH_TICKETS_SUCCESS,
-    SAVE_ID,
+    SAVE_ID, SAVE_SLICED_TICKETS,
     SAVE_SORTED_TICKETS,
     SAVE_TICKETS
 } from "./types";
@@ -10,9 +10,21 @@ import {
 export const saveTickets = (payload) => ({
     type: SAVE_TICKETS, payload
 })
-export const saveSortedTickets = (payload) => ({
-    type: SAVE_SORTED_TICKETS, payload
-})
+
+export const saveSortedTickets = (payload) => {
+    return {
+        type: SAVE_SORTED_TICKETS, payload
+    }
+}
+
+export const saveSlicedTickets = (payload) => {
+    const sliced = payload.tickets.slice(0,5)
+
+    return {
+        type: SAVE_SLICED_TICKETS, payload: sliced
+    }
+}
+
 export const saveSearchId = (payload) => ({
     type: SAVE_ID, payload
 })

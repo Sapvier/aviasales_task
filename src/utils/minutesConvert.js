@@ -1,7 +1,9 @@
-export const minutesConvert = (duration) => {
-    const hours = (duration / 60);
-    const rhours = Math.floor(duration / 60);
-    const minutes = (hours - rhours) * 60;
-    const rminutes = Math.round(minutes) < 10 ? '0' + Math.round(minutes) : Math.round(minutes);
-    return rhours + "ч " + rminutes + "м";
+import * as dateFns from "date-fns";
+import {differenceInHours} from "date-fns";
+
+
+export const minutesConvert = (dep, dur) => {
+    const depDate = new Date(dep.replace('Z', "+03:00"))
+    const durDate = dateFns.addMinutes(new Date(dep.replace('Z', "+03:00")), dur);
+    return differenceInHours(durDate, depDate) + "ч " + dateFns.format(new Date(dur*60*1000), 'mmм')
 }

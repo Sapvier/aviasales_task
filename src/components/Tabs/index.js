@@ -5,7 +5,7 @@ export const sortArray = (param = 'price', tickets) => {
         } else if (param === 'speed') {
             return ((a.segments[0].duration + a.segments[1].duration) - (b.segments[0].duration + b.segments[1].duration))
         } else if (param === 'optimal') {
-            return a['price'] - b['price'] || (a.segments[0].duration + a.segments[1].duration) - (b.segments[0].duration + b.segments[1].duration)
+            return Math.round(a['price'] / 10000) - Math.round(b['price'] / 10000) || (a.segments[0].duration + a.segments[1].duration) - (b.segments[0].duration + b.segments[1].duration)
         }
     })
 }

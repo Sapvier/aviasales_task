@@ -4,14 +4,16 @@ import {v4} from 'uuid';
 import {Segment, SegmentItem, TicketHeader, TicketWrapper} from "./styled";
 //utils
 import {minutesConvert} from "../../utils/minutesConvert";
+import * as dateFns from "date-fns";
+
 
 
 const Ticket = ({ticket}) => {
         const price = (ticket.price + '').replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 
         const getArrivalTime = (departure, duration) => {
-            const departTime = new Date(departure)
-            return new Date(departTime.setMinutes(departTime.getMinutes() + duration)).toTimeString().substr(0, 5)
+            const helperDate = dateFns.addMinutes(new Date(departure.replace('Z', "+03:00")), duration);
+            return dateFns.format(helperDate, 'HH:mm');
         }
 
         return (
@@ -28,7 +30,8 @@ const Ticket = ({ticket}) => {
                         </SegmentItem>
                         <SegmentItem>
                             <h5>В ПУТИ</h5>
-                            <p>{minutesConvert(segment.duration)}</p>
+                            {/*<p>{minutesConvert(segment.duration)}</p>*/}
+                            <p>{minutesConvert(segment.date, segment.duration)}</p>
                         </SegmentItem>
                         <SegmentItem>
                             {segment.stops.length ?

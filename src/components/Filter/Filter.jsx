@@ -5,12 +5,13 @@ import {setChecked} from "../../store/filter/actions";
 
 
 const Filter = () => {
-    const tickets = useSelector(state => state.ticketsReducer.tickets).slice(0, 5)
+    const slicedTickets = useSelector(state => state.ticketsReducer.slicedTickets)
     const checkboxes = useSelector(state => state.filterReducer)
     const dispatch = useDispatch()
 
+
     const changeHandler = (id) => {
-        dispatch(setChecked({id, checkboxes, tickets}))
+        dispatch(setChecked({id, checkboxes, slicedTickets}))
     }
 
 
